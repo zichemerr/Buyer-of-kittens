@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuyingProduct : MonoBehaviour
+public abstract class BuyingProduct : MonoBehaviour
 {
-    [SerializeField] private PlayerWallet _wallet;
+    [SerializeField] private PlayerWallet _playerWallet;
     [SerializeField] private Product[] _productsArray;
 
     private Queue<Product> _products;
+    public Product CurrentProduct { get; private set; }
+    public PlayerWallet PlayerWallet => _playerWallet;
 
     //public event Action OperationCompleted;
 
@@ -18,19 +20,11 @@ public class BuyingProduct : MonoBehaviour
             _products.Enqueue(productsArray);
     }
 
-    public void OnBuy()
+    public virtual void OnBuy()
     {
-        if (_products.Count <= 0)
+        if (_products.Count <= 0 || _playerWallet.MoneyEnough(_products.Peek().Price) == false)
             return;
 
-        Product product = _products.Peek();
-
-        bool buy = _wallet.BuyClickReward(product.Price, product.Reward);
-
-        if (buy)
-        {
-            _products.Dequeue();
-            //OperationCompleted?.Invoke();
-        }
+        CurrentProduct = _products.Dequeue();
     }
 }

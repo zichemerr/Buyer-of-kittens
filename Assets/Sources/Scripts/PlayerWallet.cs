@@ -38,6 +38,18 @@ public class PlayerWallet : MonoBehaviour
         StartCoroutine(GetReward());
     }
 
+    private bool Buy(int price, int reward)
+    {
+        if (price > _money)
+            return false;
+
+        if (reward < 0)
+            throw new ArgumentOutOfRangeException(nameof(reward));
+
+        _money -= price;
+        return true;
+    }
+
     public bool BuyClickReward(int price, int clickReward)
     {
         if (Buy(price, clickReward))
@@ -56,22 +68,18 @@ public class PlayerWallet : MonoBehaviour
         {
             _scoreView.ShowValue(_money);
             _rewardPerSecond += rewardPerSecond;
-            _rewarPerSecondView.ShowValue(rewardPerSecond);
+            _rewarPerSecondView.ShowValue(_rewardPerSecond);
             return true;
         }
 
         return false;
     }
 
-    private bool Buy(int price, int reward)
+    public bool MoneyEnough(int price)
     {
         if (price > _money)
             return false;
 
-        if (reward < 0)
-            throw new ArgumentOutOfRangeException(nameof(reward));
-
-        _money -= price;
         return true;
     }
 }
