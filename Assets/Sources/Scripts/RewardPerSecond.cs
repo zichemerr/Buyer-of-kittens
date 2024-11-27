@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class RewardPerSecond : BuyingProduct
 {
     public override void OnBuy()

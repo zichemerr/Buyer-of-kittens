@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private PlayerWallet _wallet;
     [SerializeField] private PlayerClickSound _clickSound;
     [SerializeField] private ClickerZone _clickerZone;
     [SerializeField] private PlayerAnimaion _animation;
 
-    public void Init()
+    private PlayerWallet _wallet;
+
+    public void Init(PlayerWallet playerWallet)
     {
+        _wallet = playerWallet;
         _wallet.Init(_clickerZone);
+        _clickSound.Init();
         _animation.Init();
     }
 

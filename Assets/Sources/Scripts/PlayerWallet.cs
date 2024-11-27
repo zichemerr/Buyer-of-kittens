@@ -4,13 +4,15 @@ using System.Collections;
 
 public class PlayerWallet : MonoBehaviour
 {
-    [SerializeField] private ScoreView _scoreView;
-    [SerializeField] private ScoreView _rewarPerSecondView;
+    [SerializeField] private ValueView _scoreView;
+    [SerializeField] private ValueView _rewarPerSecondView;
     [SerializeField] private int _clickPrice;
     [SerializeField] private int _rewardPerSecond;
 
     private ClickerZone _clickerZone;
     private int _money;
+
+    public event Action<int> ValueChanged;
 
     public void Init(ClickerZone clickerZone)
     {
@@ -27,6 +29,7 @@ public class PlayerWallet : MonoBehaviour
     private void OnClicked()
     {
         _money += _clickPrice;
+        ValueChanged?.Invoke(_money);
         _scoreView.ShowValue(_money);
     }
 
@@ -34,6 +37,7 @@ public class PlayerWallet : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         _money += _rewardPerSecond;
+        ValueChanged?.Invoke(_money);
         _scoreView.ShowValue(_money);
         StartCoroutine(GetReward());
     }
@@ -47,6 +51,7 @@ public class PlayerWallet : MonoBehaviour
             throw new ArgumentOutOfRangeException(nameof(reward));
 
         _money -= price;
+        ValueChanged?.Invoke(_money);
         return true;
     }
 
