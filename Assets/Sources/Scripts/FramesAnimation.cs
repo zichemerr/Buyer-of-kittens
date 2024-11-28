@@ -5,17 +5,13 @@ using UnityEngine.UI;
 public class FramesAnimation : MonoBehaviour
 {
     [SerializeField] private Image _image;
-    [SerializeField] private FramesSprite _frames;
 
     private Queue<Sprite> _sprites = new Queue<Sprite>();
+    private FramesSprite _frames;
 
-    public void Init()
+    public void SetFramesSprite(FramesSprite frames)
     {
-        InitArray();
-    }
-
-    private void InitArray()
-    {
+        _frames = frames;
         _sprites = new Queue<Sprite>();
 
         for (int i = 0; i < _frames.SpritesCount; i++)
@@ -27,7 +23,7 @@ public class FramesAnimation : MonoBehaviour
         if (_sprites.Count > 0)
             return _sprites.Dequeue();
 
-        InitArray();
+        SetFramesSprite(_frames);
         return _sprites.Dequeue();
     }
 

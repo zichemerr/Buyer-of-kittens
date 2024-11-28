@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerAnimaion : MonoBehaviour
 {
-    [SerializeField] private FramesAnimation _framesAnimation;
+    [SerializeField] private FramesAnimation _frames;
+    [SerializeField] private AnimationSwitcher _switcher;
     [SerializeField] private Transform _transform;
     [SerializeField] private Vector3 _scale;
     [SerializeField] private float _clickDuration;
@@ -13,12 +13,12 @@ public class PlayerAnimaion : MonoBehaviour
     public void Init()
     {
         _clickAnimation = new ClickAnimation(_transform, _scale, _clickDuration);
-        _framesAnimation.Init();
+        _switcher.Init(_frames);
     }
 
     public void Play()
     {
         _clickAnimation.Play();
-        _framesAnimation.Play();
+        _frames.Play();
     }
 }

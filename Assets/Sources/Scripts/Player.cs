@@ -3,22 +3,21 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private PlayerClickSound _clickSound;
-    [SerializeField] private ClickerZone _clickerZone;
     [SerializeField] private PlayerAnimaion _animation;
 
+    private ClickerZone _clickerZone;
     private PlayerWallet _wallet;
 
-    public void Init(PlayerWallet playerWallet)
+    public void Init(ClickerZone clickerZone, PlayerWallet playerWallet)
     {
+        _clickerZone = clickerZone;
+        _clickerZone.Clicked += OnClicked;
+
         _wallet = playerWallet;
         _wallet.Init(_clickerZone);
-        _clickSound.Init();
-        _animation.Init();
-    }
 
-    private void OnEnable()
-    {
-        _clickerZone.Clicked += OnClicked;
+        _animation.Init();
+        _clickSound.Init();
     }
 
     private void OnDisable()
