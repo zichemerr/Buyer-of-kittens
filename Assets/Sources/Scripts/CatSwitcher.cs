@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CatChanger : MonoBehaviour
+public class CatSwitcher : MonoBehaviour
 {
     [SerializeField] private AnimationSwitcher _switcher;
     [SerializeField] private int _maxScore;

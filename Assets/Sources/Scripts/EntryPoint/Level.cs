@@ -5,7 +5,7 @@ public class Level : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private PlayerWallet _playerWallet;
     [SerializeField] private ClickerZone _clickerZone;
-    [SerializeField] private CatChanger _catChanger;
+    [SerializeField] private CatSwitcher _catChanger;
     [SerializeField] private BuyingProduct[] _buyingProducts;
 
     private void Start()

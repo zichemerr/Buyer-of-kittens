@@ -8,5 +8,11 @@ public class SceneSwitcher
     {
         EditorSceneManager.OpenScene("Assets/Sources/Scenes/SampleScene.unity");
     }
+   
+    [MenuItem("Scene/test")]
+    public static void TestScene()
+    {
+        EditorSceneManager.OpenScene("Assets/Sources/Scenes/TestScene.unity");
+    }
 }
 
