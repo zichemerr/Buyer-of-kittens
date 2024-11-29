@@ -67,8 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C \u0434\u043E\u0445\u043E\u0434
-    \u0432 \u0441\u0435\u043A"
+  m_text: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C \u0434\u043E\u0445\u043E\u0434"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 016a0b87655442b42862860c76573966, type: 2}
   m_sharedMaterial: {fileID: 2602844560349078949, guid: 016a0b87655442b42862860c76573966, type: 2}
@@ -893,10 +892,10 @@ MonoBehaviour:
   useCustomContent: 0
   useCustomTextSize: 0
   checkForDoubleClick: 1
-  enableButtonSounds: 0
-  useHoverSound: 1
+  enableButtonSounds: 1
+  useHoverSound: 0
   useClickSound: 1
-  hoverSound: {fileID: 0}
+  hoverSound: {fileID: 8300000, guid: 5e3d26795609ba54694b9d1b2c69100a, type: 3}
   clickSound: {fileID: 0}
   useUINavigation: 0
   navigationMode: 3
@@ -931,7 +930,7 @@ MonoBehaviour:
   renderOnTop: 1
   centered: 0
   isPreset: 1
-  latestTabIndex: 0
+  latestTabIndex: 2
 --- !u!114 &3706885862138867559
 MonoBehaviour:
   m_ObjectHideFlags: 0

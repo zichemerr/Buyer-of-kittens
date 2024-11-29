@@ -4,8 +4,9 @@ using UnityEngine;
 public abstract class BuyingProduct : MonoBehaviour
 {
     [SerializeField] private Product[] _productsArray;
-    [SerializeField] private ValueView _priceView;
+    [SerializeField] private MoneyView _priceView;
     [SerializeField] private InteractableButton _interactionButton;
+    [SerializeField] private ClickSound _clickSound;
 
     private PlayerWallet _playerWallet;
     private Queue<Product> _products;
@@ -23,7 +24,7 @@ public abstract class BuyingProduct : MonoBehaviour
             _products.Enqueue(productsArray);
 
         OnValueChanged(0);
-        _priceView.ShowValue(_products.Peek().Price);
+        _priceView.ShowMoney(_products.Peek().Price);
     }
 
     private void OnDisable()
@@ -52,12 +53,14 @@ public abstract class BuyingProduct : MonoBehaviour
 
     public virtual void OnBuy()
     {
+        _clickSound.Play();
+
         if (_products.Count <= 0 || _playerWallet.MoneyEnough(_products.Peek().Price) == false)
             return;
 
         CurrentProduct = _products.Dequeue();
 
         if (_products.Count > 0)
-            _priceView.ShowValue(_products.Peek().Price);
+            _priceView.ShowMoney(_products.Peek().Price);
     }
 }

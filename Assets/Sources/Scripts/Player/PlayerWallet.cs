@@ -4,8 +4,8 @@ using System.Collections;
 
 public class PlayerWallet : MonoBehaviour
 {
-    [SerializeField] private ValueView _scoreView;
-    [SerializeField] private ValueView _rewarPerSecondView;
+    [SerializeField] private MoneyView _scoreView;
+    [SerializeField] private MoneyView _rewarPerSecondView;
     [SerializeField] private int _clickPrice;
     [SerializeField] private int _rewardPerSecond;
 
@@ -30,7 +30,7 @@ public class PlayerWallet : MonoBehaviour
     {
         _money += _clickPrice;
         ValueChanged?.Invoke(_money);
-        _scoreView.ShowValue(_money);
+        _scoreView.ShowMoney(_money);
     }
 
     private IEnumerator GetReward()
@@ -38,7 +38,7 @@ public class PlayerWallet : MonoBehaviour
         yield return new WaitForSeconds(1);
         _money += _rewardPerSecond;
         ValueChanged?.Invoke(_money);
-        _scoreView.ShowValue(_money);
+        _scoreView.ShowMoney(_money);
         StartCoroutine(GetReward());
     }
 
@@ -60,7 +60,7 @@ public class PlayerWallet : MonoBehaviour
         if (Buy(price, clickReward))
         {
             _clickPrice += clickReward;
-            _scoreView.ShowValue(_money);
+            _scoreView.ShowMoney(_money);
             return true;
         }
 
@@ -71,9 +71,9 @@ public class PlayerWallet : MonoBehaviour
     {
         if (Buy(price, rewardPerSecond))
         {
-            _scoreView.ShowValue(_money);
+            _scoreView.ShowMoney(_money);
             _rewardPerSecond += rewardPerSecond;
-            _rewarPerSecondView.ShowValue(_rewardPerSecond);
+            _rewarPerSecondView.ShowMoney(_rewardPerSecond);
             return true;
         }
 

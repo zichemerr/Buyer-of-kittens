@@ -1792,7 +1792,7 @@ MonoBehaviour:
   enableButtonSounds: 1
   useHoverSound: 0
   useClickSound: 1
-  hoverSound: {fileID: 0}
+  hoverSound: {fileID: 8300000, guid: 5e3d26795609ba54694b9d1b2c69100a, type: 3}
   clickSound: {fileID: 8300000, guid: 891a88f5b1fd7e04f9813e2b2b7a65fd, type: 3}
   useUINavigation: 0
   navigationMode: 3

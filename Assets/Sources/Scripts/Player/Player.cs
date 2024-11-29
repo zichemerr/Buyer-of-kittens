@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private PlayerClickSound _clickSound;
+    [SerializeField] private ClickSound _clickSound;
     [SerializeField] private PlayerAnimaion _animation;
 
     private ClickerZone _clickerZone;
@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
         _wallet.Init(_clickerZone);
 
         _animation.Init();
-        _clickSound.Init();
     }
 
     private void OnDisable()
