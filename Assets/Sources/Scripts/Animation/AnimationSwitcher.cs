@@ -8,6 +8,8 @@ public class AnimationSwitcher : MonoBehaviour
     private Queue<FramesSprite> _frames;
     private FramesAnimation _framesAnimation;
 
+    public int FramesCount => _frames.Count;
+
     public void Init(FramesAnimation framesAnimation)
     {
         _frames = new Queue<FramesSprite>();

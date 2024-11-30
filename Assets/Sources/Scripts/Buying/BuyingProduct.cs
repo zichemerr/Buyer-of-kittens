@@ -12,6 +12,7 @@ public abstract class BuyingProduct : MonoBehaviour
     private Queue<Product> _products;
 
     protected Product CurrentProduct { get; private set; }
+    protected int ProductsCount => _products.Count;
     protected PlayerWallet PlayerWallet => _playerWallet;
 
     public void Init(PlayerWallet playerWallet)
@@ -36,7 +37,7 @@ public abstract class BuyingProduct : MonoBehaviour
     {
         if (_products.Count <= 0)
         {
-            SetButton(CurrentProduct.Price);
+            _interactionButton.Disable();
             return;
         }
 
@@ -51,16 +52,28 @@ public abstract class BuyingProduct : MonoBehaviour
             _interactionButton.Disable();
     }
 
-    public virtual void OnBuy()
+    public virtual bool Buy()
     {
-        _clickSound.Play();
+        if (_products.Count <= 0)
+        {
+            _interactionButton.Disable();
+            return false;
+        }
 
-        if (_products.Count <= 0 || _playerWallet.MoneyEnough(_products.Peek().Price) == false)
-            return;
+        if (_playerWallet.MoneyEnough(_products.Peek().Price) == false)
+        {
+            _interactionButton.Disable();
+            return false;
+        }
 
         CurrentProduct = _products.Dequeue();
+        _clickSound.Play();
 
         if (_products.Count > 0)
+        {
             _priceView.ShowMoney(_products.Peek().Price);
+        }
+
+        return true;
     }
 }

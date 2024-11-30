@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Diagnostics;
 
 public class PlayerWallet : MonoBehaviour
 {
@@ -53,6 +54,17 @@ public class PlayerWallet : MonoBehaviour
         _money -= price;
         ValueChanged?.Invoke(_money);
         return true;
+    }
+
+    public bool Buy(int price)
+    {
+        if (Buy(price, 0))
+        {
+            _scoreView.ShowMoney(_money);
+            return true;
+        }
+
+        return false;
     }
 
     public bool BuyClickReward(int price, int clickReward)
