@@ -1,18 +1,8 @@
 ﻿public class ClickReward : BuyingProduct
 {
-    public void OnBuy()
+    public override void OnBuy()
     {
-        Buy();
-    }
-
-    public override bool Buy()
-    {
-        bool buyed = base.Buy();
-
-        if (buyed == false)
-            return buyed;
-
+        base.OnBuy();
         PlayerWallet.BuyClickReward(CurrentProduct.Price, CurrentProduct.Reward);
-        return buyed;
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public abstract class BuyingProduct : MonoBehaviour
@@ -12,7 +13,6 @@ public abstract class BuyingProduct : MonoBehaviour
     private Queue<Product> _products;
 
     protected Product CurrentProduct { get; private set; }
-    protected int ProductsCount => _products.Count;
     protected PlayerWallet PlayerWallet => _playerWallet;
 
     public void Init(PlayerWallet playerWallet)
@@ -52,18 +52,12 @@ public abstract class BuyingProduct : MonoBehaviour
             _interactionButton.Disable();
     }
 
-    public virtual bool Buy()
+    public virtual void OnBuy()
     {
-        if (_products.Count <= 0)
+        if (_products.Count <= 0 && _playerWallet.MoneyEnough(_products.Peek().Price) == false)
         {
             _interactionButton.Disable();
-            return false;
-        }
-
-        if (_playerWallet.MoneyEnough(_products.Peek().Price) == false)
-        {
-            _interactionButton.Disable();
-            return false;
+            return;
         }
 
         CurrentProduct = _products.Dequeue();
@@ -73,7 +67,5 @@ public abstract class BuyingProduct : MonoBehaviour
         {
             _priceView.ShowMoney(_products.Peek().Price);
         }
-
-        return true;
     }
 }

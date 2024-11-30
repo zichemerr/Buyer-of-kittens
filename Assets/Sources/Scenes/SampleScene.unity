@@ -749,7 +749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scoreView: {fileID: 7489332262760692303}
   _rewarPerSecondView: {fileID: 1797782638}
-  _clickPrice: 1
+  _clickPrice: 450
   _rewardPerSecond: 1
 --- !u!114 &302655642
 MonoBehaviour:

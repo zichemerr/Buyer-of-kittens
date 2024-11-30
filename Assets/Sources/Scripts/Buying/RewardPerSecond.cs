@@ -1,18 +1,8 @@
 public class RewardPerSecond : BuyingProduct
 {
-    public void OnBuy()
+    public override void OnBuy()
     {
-        Buy();
-    }
-
-    public override bool Buy()
-    {
-        bool buyed = base.Buy();
-
-        if (buyed == false)
-            return buyed;
-
+        base.OnBuy();
         PlayerWallet.BuyRewardPerSecond(CurrentProduct.Price, CurrentProduct.Reward);
-        return buyed;
     }
 }
