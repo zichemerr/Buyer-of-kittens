@@ -194,7 +194,7 @@ MonoBehaviour:
   currentPercent: 0
   speed: 5
   minValue: 0
-  maxValue: 100
+  maxValue: 20
   valueLimit: 100
   loadingBar: {fileID: 2092915823}
   textPercent: {fileID: 598097652}
@@ -749,7 +749,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scoreView: {fileID: 7489332262760692303}
   _rewarPerSecondView: {fileID: 1797782638}
-  _clickPrice: 450
+  _progress: {fileID: 302655643}
+  _clickPrice: 1
   _rewardPerSecond: 1
 --- !u!114 &302655642
 MonoBehaviour:
@@ -809,14 +810,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 302655634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a102bf7377c49ce42acfab76b9430e56, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a9a062466ccca74696aa0655718ff0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _switcher: {fileID: 302655642}
   _progressBar: {fileID: 13782380}
   _valueView: {fileID: 76470933}
-  _maxScore: 10
-  _maxLevel: 4
+  _rewardsArray: 640000002c010000e8030000
+  _maxValue: 50
+  _maxLevel: 5
 --- !u!1 &311533671
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,7 +2400,7 @@ MonoBehaviour:
   _player: {fileID: 302655636}
   _playerWallet: {fileID: 302655641}
   _clickerZone: {fileID: 335961527}
-  _catChanger: {fileID: 302655643}
+  _progress: {fileID: 302655643}
   _buyingProducts:
   - {fileID: 7825282907216476141}
   - {fileID: 2104904526}

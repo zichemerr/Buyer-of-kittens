@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
-using System.Diagnostics;
 
 public class PlayerWallet : MonoBehaviour
 {
     [SerializeField] private MoneyView _scoreView;
     [SerializeField] private MoneyView _rewarPerSecondView;
+    [SerializeField] private Progress _progress;
     [SerializeField] private int _clickPrice;
     [SerializeField] private int _rewardPerSecond;
 
@@ -22,9 +22,22 @@ public class PlayerWallet : MonoBehaviour
         StartCoroutine(GetReward());
     }
 
+    private void OnEnable()
+    {
+        _progress.Rewarded += OnRewarded;
+    }
+
     private void OnDisable()
     {
         _clickerZone.Clicked -= OnClicked;
+        _progress.Rewarded -= OnRewarded;
+    }
+
+    private void OnRewarded(int reward)
+    {
+        _money += reward;
+        ValueChanged?.Invoke(_money);
+        _scoreView.ShowMoney(_money);
     }
 
     private void OnClicked()
