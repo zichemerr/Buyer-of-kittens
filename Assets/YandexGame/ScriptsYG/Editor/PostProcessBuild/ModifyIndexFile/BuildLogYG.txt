@@ -1,0 +1,2 @@
+Build path: D:/Builds/Clicker
+Build number: 1

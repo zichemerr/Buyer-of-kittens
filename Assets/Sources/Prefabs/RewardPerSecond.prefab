@@ -996,7 +996,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 344.92, y: -100}
-  m_SizeDelta: {x: 0, y: 200}
+  m_SizeDelta: {x: 689.84, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &246052425351229662
 CanvasGroup:
@@ -2322,6 +2322,7 @@ MonoBehaviour:
     _reward: 5
   _priceView: {fileID: 9199328284275607824}
   _interactionButton: {fileID: 7550204147626969514}
+  _clickSound: {fileID: 0}
 --- !u!114 &9199328284275607824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2334,10 +2335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0710d7856b96154b92964ec6c8d74be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _valueText:
-  - {fileID: 8602398429797126516}
-  - {fileID: 3565492605694980423}
-  - {fileID: 2183678642552466674}
+  _moneyText: []
 --- !u!225 &6142327347122313902
 CanvasGroup:
   m_ObjectHideFlags: 0

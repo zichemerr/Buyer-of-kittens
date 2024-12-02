@@ -14,6 +14,7 @@ public class PlayerWallet : MonoBehaviour
     private int _money;
 
     public event Action<int> ValueChanged;
+    public int ClickPrice => _clickPrice;
 
     public void Init(ClickerZone clickerZone)
     {

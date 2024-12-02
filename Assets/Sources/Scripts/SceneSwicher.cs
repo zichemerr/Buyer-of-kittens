@@ -1,18 +1,18 @@
-using UnityEditor;
-using UnityEditor.SceneManagement;
+//using UnityEditor;
+//using UnityEditor.SceneManagement;
 
-public class SceneSwitcher
-{
-    [MenuItem("Scene/main")]
-    public static void Main()
-    {
-        EditorSceneManager.OpenScene("Assets/Sources/Scenes/SampleScene.unity");
-    }
+//public class SceneSwitcher
+//{
+//    [MenuItem("Scene/main")]
+//    public static void Main()
+//    {
+//        EditorSceneManager.OpenScene("Assets/Sources/Scenes/SampleScene.unity");
+//    }
    
-    [MenuItem("Scene/test")]
-    public static void TestScene()
-    {
-        EditorSceneManager.OpenScene("Assets/Sources/Scenes/TestScene.unity");
-    }
-}
+//    [MenuItem("Scene/test")]
+//    public static void TestScene()
+//    {
+//        EditorSceneManager.OpenScene("Assets/Sources/Scenes/TestScene.unity");
+//    }
+//}
 

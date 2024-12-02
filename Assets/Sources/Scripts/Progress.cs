@@ -6,12 +6,11 @@ using UnityEngine;
 public class Progress : MonoBehaviour
 {
     [SerializeField] private ProgressBar _progressBar;
-    [SerializeField] private ValueView _valueView;
+    [SerializeField] private ProgressView _valueView;
     [SerializeField] private int[] _rewardsArray;
     [SerializeField] private int _maxValue;
 
     private Queue<int> _rewards;
-    private ClickerZone _clickerZone;
     private int _value;
     private int _level = 1;
     private int _maxLevels;
@@ -20,8 +19,6 @@ public class Progress : MonoBehaviour
 
     public void Init(ClickerZone clickerZone)
     {
-        _clickerZone = clickerZone;
-        _clickerZone.Clicked += OnClicked;
         _progressBar.maxValue = _maxValue;
 
         _rewards = new Queue<int>();
@@ -32,13 +29,11 @@ public class Progress : MonoBehaviour
         _maxLevels = _rewards.Count + 1;
     }
 
-    private void OnDisable()
+    public void Add()
     {
-        _clickerZone.Clicked -= OnClicked;
-    }
+        if (_level == _maxLevels)
+            return;
 
-    private void OnClicked()
-    {
         _value++;
         _progressBar.ChangeValue(_value);
 
@@ -49,11 +44,6 @@ public class Progress : MonoBehaviour
             _level++;
             _valueView.ShowValue(_level);
             Rewarded?.Invoke(_rewards.Dequeue());
-        }
-
-        if (_level == _maxLevels)
-        {
-            _clickerZone.Clicked -= OnClicked;
         }
     }
 }
