@@ -4,6 +4,7 @@ public class PlayerAnimaion : MonoBehaviour
 {
     [SerializeField] private FramesAnimation _frames;
     [SerializeField] private AnimationSwitcher _switcher;
+    [SerializeField] private SwingAnimation _swing;
     [SerializeField] private Transform _transform;
     [SerializeField] private Vector3 _scale;
     [SerializeField] private float _clickDuration;
@@ -14,6 +15,8 @@ public class PlayerAnimaion : MonoBehaviour
     {
         _clickAnimation = new ClickAnimation(_transform, _scale, _clickDuration);
         _switcher.Init(_frames);
+        _swing.Init();
+        _swing.Play();
     }
 
     public void Play()

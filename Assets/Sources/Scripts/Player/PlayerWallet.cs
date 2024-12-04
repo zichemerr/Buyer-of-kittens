@@ -13,7 +13,7 @@ public class PlayerWallet : MonoBehaviour
     private ClickerZone _clickerZone;
     private int _money;
 
-    public event Action<int> ValueChanged;
+    public event Action ValueChanged;
     public int ClickPrice => _clickPrice;
 
     public void Init(ClickerZone clickerZone)
@@ -37,14 +37,14 @@ public class PlayerWallet : MonoBehaviour
     private void OnRewarded(int reward)
     {
         _money += reward;
-        ValueChanged?.Invoke(_money);
+        ValueChanged?.Invoke();
         _scoreView.ShowMoney(_money);
     }
 
     private void OnClicked()
     {
         _money += _clickPrice;
-        ValueChanged?.Invoke(_money);
+        ValueChanged?.Invoke();
         _scoreView.ShowMoney(_money);
     }
 
@@ -52,7 +52,7 @@ public class PlayerWallet : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         _money += _rewardPerSecond;
-        ValueChanged?.Invoke(_money);
+        ValueChanged?.Invoke();
         _scoreView.ShowMoney(_money);
         StartCoroutine(GetReward());
     }
@@ -66,7 +66,7 @@ public class PlayerWallet : MonoBehaviour
             throw new ArgumentOutOfRangeException(nameof(reward));
 
         _money -= price;
-        ValueChanged?.Invoke(_money);
+        ValueChanged?.Invoke();
         return true;
     }
 

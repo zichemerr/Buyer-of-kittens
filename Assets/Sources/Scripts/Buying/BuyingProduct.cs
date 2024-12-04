@@ -23,7 +23,7 @@ public abstract class BuyingProduct : MonoBehaviour
         foreach (var productsArray in _productsArray)
             _products.Enqueue(productsArray);
 
-        OnValueChanged(0);
+        OnValueChanged();
         _priceView.ShowMoney(_products.Peek().Price);
     }
 
@@ -32,7 +32,7 @@ public abstract class BuyingProduct : MonoBehaviour
         _playerWallet.ValueChanged -= OnValueChanged;
     }
 
-    private void OnValueChanged(int money)
+    private void OnValueChanged()
     {
         if (_products.Count <= 0)
         {

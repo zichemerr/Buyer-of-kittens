@@ -21,7 +21,6 @@ public class AnimationSwitcher : MonoBehaviour
         _framesAnimation.SetFramesSprite(_frames.Dequeue());
     }
 
-    [ContextMenu("Switch")]
     public void Switch()
     {
         if (_frames.Count <= 0)
