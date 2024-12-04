@@ -37,12 +37,20 @@ public class Progress : MonoBehaviour
         _value++;
         _progressBar.ChangeValue(_value);
 
+        if (_value == _maxValue && _level == (_maxLevels - 1))
+        {
+            _level++;
+            Rewarded?.Invoke(_rewards.Dequeue());
+            return;
+        }
+
         if (_value == (_maxValue + 1))
         {
-            _value = 0;
-            _progressBar.ChangeValue(_value);
             _level++;
             _valueView.ShowValue(_level);
+
+            _value = 0;
+            _progressBar.ChangeValue(_value);
             Rewarded?.Invoke(_rewards.Dequeue());
         }
     }
