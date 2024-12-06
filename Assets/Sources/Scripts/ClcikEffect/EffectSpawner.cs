@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [Serializable]
 public class EffectSpawner
@@ -23,5 +24,10 @@ public class EffectSpawner
         rewardText.SetPosition(position + new Vector2(0, _spawnPositonY));
 
         return rewardText;
+    }
+
+    public RewardText Spawn(Vector2 position)
+    {
+        return GameObject.Instantiate(_rewardText, _transform.parent);
     }
 }

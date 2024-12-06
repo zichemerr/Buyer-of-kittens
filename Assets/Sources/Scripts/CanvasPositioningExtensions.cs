@@ -2,25 +2,10 @@
 
 public static class CanvasPositioningExtensions
 {
-    public static Vector3 WorldToCanvasPosition(this Canvas canvas, Vector3 worldPosition, Camera camera)
-    {
-        var viewportPosition = camera.WorldToViewportPoint(worldPosition);
-        return canvas.ViewportToCanvasPosition(viewportPosition);
-    }
-
     public static Vector3 ScreenToCanvasPosition(this Canvas canvas, Vector2 screenPosition)
     {
-        var viewportPosition = new Vector2(screenPosition.x / Screen.width, screenPosition.y / Screen.height);
+        Vector3 position = Camera.main.ScreenToWorldPoint(screenPosition);
 
-        return canvas.ViewportToCanvasPosition(viewportPosition);
-    }
-
-    public static Vector3 ViewportToCanvasPosition(this Canvas canvas, Vector2 viewportPosition)
-    {
-        var canvasTransform = (RectTransform)canvas.transform;
-
-        var scaled = Vector2.Scale(viewportPosition, canvasTransform.sizeDelta);
-
-        return Vector2.Scale(scaled, canvasTransform.localScale);
+        return RectTransformUtility.WorldToScreenPoint(Camera.main, position);
     }
 }

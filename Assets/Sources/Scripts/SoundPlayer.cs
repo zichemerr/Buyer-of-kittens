@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 
-public class ClickSound : MonoBehaviour
+[Serializable]
+public class SoundPlayer
 {
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClip;

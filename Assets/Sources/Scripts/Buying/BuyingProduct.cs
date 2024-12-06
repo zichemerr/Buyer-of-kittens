@@ -6,7 +6,7 @@ public abstract class BuyingProduct : MonoBehaviour
     [SerializeField] private Product[] _productsArray;
     [SerializeField] private MoneyView _priceView;
     [SerializeField] private InteractableButton _interactionButton;
-    [SerializeField] private ClickSound _clickSound;
+    [SerializeField] private SoundPlayer _clickSound;
 
     private PlayerWallet _playerWallet;
     private Queue<Product> _products;

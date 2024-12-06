@@ -8,13 +8,6 @@ public class ClickEffectAnimation
     [SerializeField] private float _endPositionY;
     [SerializeField] private float _duration;
 
-    private Transform _transform;
-    
-    public void Init(Transform transform)
-    {
-        _transform = transform;
-    }
-
     public void Play(RewardText reward)
     {
         reward.transform

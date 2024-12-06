@@ -4,11 +4,11 @@ public class ClickEffect : MonoBehaviour
 {
     [SerializeField] private EffectSpawner _effectSpawner;
     [SerializeField] private ClickEffectAnimation _animation;
+    [SerializeField] private Transform _transform;
 
-    public void Init(ClickerZone clickerZone)
+    public void Init()
     {
-        _effectSpawner.Init(transform);
-        _animation.Init(transform);
+        _effectSpawner.Init(_transform);
     }
 
     public void Play(int money)

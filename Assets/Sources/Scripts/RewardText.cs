@@ -12,4 +12,9 @@ public class RewardText : MonoBehaviour
     {
         transform.position = positon;
     }
+
+    public void SetScale(Vector2 scale)
+    {
+        transform.localScale = scale;
+    }
 }
