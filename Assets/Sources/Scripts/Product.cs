@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public struct Product
+public class Product
 {
     [SerializeField] private int _price;
     [SerializeField] private int _reward;

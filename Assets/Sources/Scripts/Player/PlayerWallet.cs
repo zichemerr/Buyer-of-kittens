@@ -4,20 +4,38 @@ using System.Collections;
 
 public class PlayerWallet : MonoBehaviour
 {
+    private const string PlayerData = nameof(PlayerData);
+
     [SerializeField] private MoneyView _scoreView;
     [SerializeField] private MoneyView _rewarPerSecondView;
     [SerializeField] private Progress _progress;
-    [SerializeField] private int _clickPrice;
-    [SerializeField] private int _rewardPerSecond;
+
+    [Header("DefaultValues"), Space(5)]
+    [SerializeField] private PlayerData _playerData;
 
     private ClickerZone _clickerZone;
+    private JsonSavingSystem<PlayerData> _jsonSaving;
     private int _money;
+    private int _clickPrice;
+    private int _rewardPerSecond;
 
     public event Action ValueChanged;
     public int ClickPrice => _clickPrice;
 
     public void Init(ClickerZone clickerZone)
     {
+        _jsonSaving = new JsonSavingSystem<PlayerData>();
+
+        if (_jsonSaving.KeyIsNull(PlayerData) == false)
+            _playerData = _jsonSaving.Load(PlayerData);
+
+        _money = _playerData.Money;
+        _rewardPerSecond = _playerData.RewardPerSecond;
+        _clickPrice = _playerData.ClickReward;
+
+        _scoreView.ShowMoney(_money);
+        _rewarPerSecondView.ShowMoney(_rewardPerSecond);
+
         _clickerZone = clickerZone;
         _clickerZone.Clicked += OnClicked;
         StartCoroutine(GetReward());
@@ -34,76 +52,72 @@ public class PlayerWallet : MonoBehaviour
         _progress.Rewarded -= OnRewarded;
     }
 
-    private void OnRewarded(int reward)
-    {
-        _money += reward;
-        ValueChanged?.Invoke();
-        _scoreView.ShowMoney(_money);
-    }
-
     private void OnClicked()
     {
-        _money += _clickPrice;
-        ValueChanged?.Invoke();
-        _scoreView.ShowMoney(_money);
+        ChangeMoney(_clickPrice);
+    }
+
+    private void OnRewarded(int reward)
+    {
+        if (reward < 0)
+            throw new ArgumentOutOfRangeException(nameof(reward));
+
+        ChangeMoney(reward);
     }
 
     private IEnumerator GetReward()
     {
         yield return new WaitForSeconds(1);
-        _money += _rewardPerSecond;
-        ValueChanged?.Invoke();
-        _scoreView.ShowMoney(_money);
+        ChangeMoney(_rewardPerSecond);
         StartCoroutine(GetReward());
     }
 
-    private bool Buy(int price, int reward)
+    private void ChangeMoney(int value)
     {
-        if (price > _money)
-            return false;
+        _money += value;
+        _scoreView.ShowMoney(_money);
+        Save();
+        ValueChanged?.Invoke();
+    }
 
+    private void Save()
+    {
+        new JsonSavingSystem<PlayerData>().Save(PlayerData, _playerData.SetValues(_money, _rewardPerSecond, _clickPrice));
+    }
+
+    public bool Buy(int price, int reward)
+    {
         if (reward < 0)
             throw new ArgumentOutOfRangeException(nameof(reward));
 
-        _money -= price;
-        ValueChanged?.Invoke();
-        return true;
+        return Buy(price);
     }
 
     public bool Buy(int price)
     {
-        if (Buy(price, 0))
-        {
-            _scoreView.ShowMoney(_money);
-            return true;
-        }
+        if (price > _money)
+            return false;
 
-        return false;
+        ChangeMoney(-price);
+        return true;
     }
 
-    public bool BuyClickReward(int price, int clickReward)
+    public void BuyClickReward(int price, int clickReward)
     {
-        if (Buy(price, clickReward))
-        {
-            _clickPrice += clickReward;
-            _scoreView.ShowMoney(_money);
-            return true;
-        }
+        if (Buy(price, clickReward) == false)
+            return;
 
-        return false;
+        _clickPrice += clickReward;
     }
 
-    public bool BuyRewardPerSecond(int price, int rewardPerSecond)
+    public void BuyRewardPerSecond(int price, int rewardPerSecond)
     {
-        if (Buy(price, rewardPerSecond))
-        {
-            _scoreView.ShowMoney(_money);
-            _rewardPerSecond += rewardPerSecond;
-            _rewarPerSecondView.ShowMoney(_rewardPerSecond);
-            return true;
-        }
+        if (Buy(price, rewardPerSecond) == false)
+            return;
 
-        return false;
+        _rewardPerSecond += rewardPerSecond;
+        Save();
+        _rewarPerSecondView.ShowMoney(_rewardPerSecond);
     }
 
     public bool MoneyEnough(int price)

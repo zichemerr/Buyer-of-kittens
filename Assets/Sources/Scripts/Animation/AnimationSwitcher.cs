@@ -4,6 +4,7 @@ using UnityEngine;
 public class AnimationSwitcher : MonoBehaviour
 {
     [SerializeField] private FramesSprite[] _framesArray;
+    [SerializeField] private BuyingCat _buyingCat;
 
     private Queue<FramesSprite> _frames;
     private FramesAnimation _framesAnimation;
@@ -19,6 +20,9 @@ public class AnimationSwitcher : MonoBehaviour
 
         _framesAnimation = framesAnimation;
         _framesAnimation.SetFramesSprite(_frames.Dequeue());
+
+        for (int i = 0; i < _buyingCat.BuyedCats; i++)
+            Switch();
     }
 
     public void Switch()

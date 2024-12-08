@@ -823,8 +823,10 @@ MonoBehaviour:
   _scoreView: {fileID: 7489332262760692303}
   _rewarPerSecondView: {fileID: 1797782638}
   _progress: {fileID: 302655643}
-  _clickPrice: 1
-  _rewardPerSecond: 1
+  _playerData:
+    Money: 1
+    RewardPerSecond: 1
+    ClickReward: 1
 --- !u!114 &302655642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +888,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 9b614eba2314021439a5fe0fc6e5301a, type: 3}
     - {fileID: 21300000, guid: c1cfde8ee5c690343bd24b9274008de1, type: 3}
     - {fileID: 21300000, guid: ddc9b056dabf8ed42bf492445eb0daa1, type: 3}
+  _buyingCat: {fileID: 1249960781}
 --- !u!114 &302655643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,6 +903,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _progressBar: {fileID: 13782380}
   _valueView: {fileID: 76470933}
+  _data:
+    Value: 0
+    Level: 1
   _rewardsArray: 640000002c0100009001000090010000401f0000
   _maxValue: 10
 --- !u!114 &302655644
@@ -2267,6 +2273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1672259702}
   - component: {fileID: 1672259701}
+  - component: {fileID: 1672259703}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -2308,6 +2315,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1672259703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672259700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87f80f6b36441c4db4ea3877316bff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1743853586
 GameObject:
   m_ObjectHideFlags: 0
@@ -2559,7 +2578,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 209.81999, y: -15.6345}
-  m_SizeDelta: {x: 36.96, y: 35}
+  m_SizeDelta: {x: 0, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1797782635
 MonoBehaviour:
@@ -3055,6 +3074,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2746618806351894933, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746618806351894933, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
       propertyPath: _clickSound
       value: 
       objectReference: {fileID: 0}
@@ -3066,6 +3089,34 @@ PrefabInstance:
       propertyPath: _clickSound._audioSource
       value: 
       objectReference: {fileID: 1214530987}
+    - target: {fileID: 2746618806351894933, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
+      propertyPath: _buyingData.Products.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746618806351894933, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
+      propertyPath: _buyingData.Products.Array.data[0]._price
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746618806351894933, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
+      propertyPath: _buyingData.Products.Array.data[1]._price
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746618806351894933, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
+      propertyPath: _buyingData.Products.Array.data[2]._price
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746618806351894933, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
+      propertyPath: _buyingData.Products.Array.data[0]._reward
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746618806351894933, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
+      propertyPath: _buyingData.Products.Array.data[1]._reward
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746618806351894933, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
+      propertyPath: _buyingData.Products.Array.data[2]._reward
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3738841857256748557, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
       propertyPath: clickSound
       value: 
@@ -3108,7 +3159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5419284203725174155, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 691.84
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5419284203725174155, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
       propertyPath: m_SizeDelta.y
@@ -3180,7 +3231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6275919074659824046, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 691.84
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6275919074659824046, guid: e017f3f90f97a4e41937f1e34b966d5d, type: 3}
       propertyPath: m_SizeDelta.y
@@ -3470,6 +3521,38 @@ PrefabInstance:
       propertyPath: _productsArray.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2071807812786193708, guid: 1d2b36bda3582b943940a42c77faa004, type: 3}
+      propertyPath: _buyingData.Products.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071807812786193708, guid: 1d2b36bda3582b943940a42c77faa004, type: 3}
+      propertyPath: _buyingData.Products.Array.data[0]._price
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071807812786193708, guid: 1d2b36bda3582b943940a42c77faa004, type: 3}
+      propertyPath: _buyingData.Products.Array.data[1]._price
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071807812786193708, guid: 1d2b36bda3582b943940a42c77faa004, type: 3}
+      propertyPath: _buyingData.Products.Array.data[2]._price
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071807812786193708, guid: 1d2b36bda3582b943940a42c77faa004, type: 3}
+      propertyPath: _buyingData.Products.Array.data[3]._price
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071807812786193708, guid: 1d2b36bda3582b943940a42c77faa004, type: 3}
+      propertyPath: _buyingData.Products.Array.data[0]._reward
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071807812786193708, guid: 1d2b36bda3582b943940a42c77faa004, type: 3}
+      propertyPath: _buyingData.Products.Array.data[1]._reward
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071807812786193708, guid: 1d2b36bda3582b943940a42c77faa004, type: 3}
+      propertyPath: _buyingData.Products.Array.data[2]._reward
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2745453094253873022, guid: 1d2b36bda3582b943940a42c77faa004, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3746,6 +3829,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 349439401}
     m_Modifications:
+    - target: {fileID: 332067140893638589, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
+      propertyPath: m_IgnoreParentGroups
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 595843141370128568, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3979,6 +4066,10 @@ PrefabInstance:
       value: -77.5
       objectReference: {fileID: 0}
     - target: {fileID: 8961910878432813056, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961910878432813056, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
       propertyPath: _clickSound
       value: 
       objectReference: {fileID: 0}
@@ -3990,6 +4081,42 @@ PrefabInstance:
       propertyPath: _clickSound._audioSource
       value: 
       objectReference: {fileID: 1214530987}
+    - target: {fileID: 8961910878432813056, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
+      propertyPath: _buyingData.Products.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961910878432813056, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
+      propertyPath: _buyingData.CurrentProduct._price
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961910878432813056, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
+      propertyPath: _buyingData.CurrentProduct._reward
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961910878432813056, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
+      propertyPath: _buyingData.Products.Array.data[0]._price
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961910878432813056, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
+      propertyPath: _buyingData.Products.Array.data[1]._price
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961910878432813056, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
+      propertyPath: _buyingData.Products.Array.data[2]._price
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961910878432813056, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
+      propertyPath: _buyingData.Products.Array.data[0]._reward
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961910878432813056, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
+      propertyPath: _buyingData.Products.Array.data[1]._reward
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961910878432813056, guid: 2bdcf42efef210c4c8e3d01d552cf8d6, type: 3}
+      propertyPath: _buyingData.Products.Array.data[2]._reward
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
