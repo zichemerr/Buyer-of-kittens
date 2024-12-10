@@ -18,8 +18,10 @@ public class PlayerWallet : MonoBehaviour
     private int _money;
     private int _clickPrice;
     private int _rewardPerSecond;
+    private bool _adIsActive = false;
 
     public event Action ValueChanged;
+
     public int ClickPrice => _clickPrice;
 
     public void Init(ClickerZone clickerZone)
@@ -52,6 +54,20 @@ public class PlayerWallet : MonoBehaviour
         _progress.Rewarded -= OnRewarded;
     }
 
+    [ContextMenu("Stop")]
+    public void OnStop()
+    {
+        StopCoroutine(GetReward());
+        _adIsActive = true;
+    }
+
+    [ContextMenu("Start")]
+    public void OnStart()
+    {
+        _adIsActive = false;
+        StartCoroutine(GetReward());
+    }
+
     private void OnClicked()
     {
         ChangeMoney(_clickPrice);
@@ -67,6 +83,9 @@ public class PlayerWallet : MonoBehaviour
 
     private IEnumerator GetReward()
     {
+        if (_adIsActive)
+            yield break;
+
         yield return new WaitForSeconds(1);
         ChangeMoney(_rewardPerSecond);
         StartCoroutine(GetReward());
