@@ -14,7 +14,7 @@ public class ClickEffect : MonoBehaviour
     public void Play(int money)
     {
         RewardText rewardText = _effectSpawner.Spawn();
-        rewardText.MoneyView.ShowMoney(money, '+');
+        rewardText.MoneyView.ShowMoney(money, "+");
         _animation.Play(rewardText);
     }
 }

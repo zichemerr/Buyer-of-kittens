@@ -5,7 +5,7 @@ public class MoneyView : MonoBehaviour
 {
     [SerializeField] private TMP_Text[] _moneyText;
 
-    public void ShowMoney(int money, char prefix)
+    public void ShowMoney(int money, string prefix)
     {
         ShowValue($"{prefix}{money}$");
     }

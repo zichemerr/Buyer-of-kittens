@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using YG;
 
 public class Level : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class Level : MonoBehaviour
     [SerializeField] private PlayerWallet _playerWallet;
     [SerializeField] private ClickerZone _clickerZone;
     [SerializeField] private BuyingProduct[] _buyingProducts;
+    [SerializeField] private string _text;
 
     private void Start()
     {
@@ -14,4 +16,7 @@ public class Level : MonoBehaviour
 
         _player.Init(_clickerZone, _playerWallet);
     }
+
+    [ContextMenu("Play")]
+    private void Switch() => YandexGame.SwitchLanguage(_text);
 }

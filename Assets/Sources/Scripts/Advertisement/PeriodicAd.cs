@@ -3,7 +3,7 @@ using TMPro;
 using YG;
 using System.Collections;
 
-public class TestAd : MonoBehaviour
+public class PeriodicAd : MonoBehaviour
 {
     [SerializeField] private GameObject _warning;
     [SerializeField] private TMP_Text _text;

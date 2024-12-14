@@ -9,6 +9,7 @@ public class PlayerWallet : MonoBehaviour
     [SerializeField] private MoneyView _scoreView;
     [SerializeField] private MoneyView _rewarPerSecondView;
     [SerializeField] private Progress _progress;
+    [SerializeField] private RewardAd _rewardAd;
 
     [Header("DefaultValues"), Space(5)]
     [SerializeField] private PlayerData _playerData;
@@ -38,34 +39,18 @@ public class PlayerWallet : MonoBehaviour
         _scoreView.ShowMoney(_money);
         _rewarPerSecondView.ShowMoney(_rewardPerSecond);
 
+        _rewardAd.Init().RewardVideo += OnRewardVideo;
         _clickerZone = clickerZone;
         _clickerZone.Clicked += OnClicked;
         StartCoroutine(GetReward());
     }
 
-    private void OnEnable()
-    {
-        _progress.Rewarded += OnRewarded;
-    }
+    private void OnEnable() => _progress.Rewarded += OnRewarded;
 
     private void OnDisable()
     {
         _clickerZone.Clicked -= OnClicked;
         _progress.Rewarded -= OnRewarded;
-    }
-
-    [ContextMenu("Stop")]
-    public void OnStop()
-    {
-        StopCoroutine(GetReward());
-        _adIsActive = true;
-    }
-
-    [ContextMenu("Start")]
-    public void OnStart()
-    {
-        _adIsActive = false;
-        StartCoroutine(GetReward());
     }
 
     private void OnClicked()
@@ -79,6 +64,12 @@ public class PlayerWallet : MonoBehaviour
             throw new ArgumentOutOfRangeException(nameof(reward));
 
         ChangeMoney(reward);
+    }
+
+    private void OnRewardVideo(LevelUpEffect levelUpEffect)
+    {
+         _money *= 2;
+        levelUpEffect.ShowRewardEffect(_money);
     }
 
     private IEnumerator GetReward()
@@ -99,10 +90,8 @@ public class PlayerWallet : MonoBehaviour
         ValueChanged?.Invoke();
     }
 
-    private void Save()
-    {
-        new JsonSavingSystem<PlayerData>().Save(PlayerData, _playerData.SetValues(_money, _rewardPerSecond, _clickPrice));
-    }
+    private void Save() => _jsonSaving.Save(PlayerData,
+        _playerData.SetValues(_money, _rewardPerSecond, _clickPrice));
 
     public bool Buy(int price, int reward)
     {
@@ -145,5 +134,19 @@ public class PlayerWallet : MonoBehaviour
             return false;
 
         return true;
+    }
+
+    [ContextMenu("Stop")]
+    public void OnStop()
+    {
+        StopCoroutine(GetReward());
+        _adIsActive = true;
+    }
+
+    [ContextMenu("Start")]
+    public void OnStart()
+    {
+        _adIsActive = false;
+        StartCoroutine(GetReward());
     }
 }
