@@ -17,6 +17,6 @@ public class Level : MonoBehaviour
         _player.Init(_clickerZone, _playerWallet);
     }
 
-    [ContextMenu("Play")]
+    [ContextMenu(nameof(Switch))]
     private void Switch() => YandexGame.SwitchLanguage(_text);
 }

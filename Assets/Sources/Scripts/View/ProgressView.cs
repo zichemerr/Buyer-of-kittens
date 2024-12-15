@@ -7,6 +7,6 @@ public class ProgressView : MonoBehaviour
 
     public void ShowValue(int level)
     {
-        _progressText.text = $"Уровень {level}";
+        _progressText.text = level.ToString();
     }
 }
