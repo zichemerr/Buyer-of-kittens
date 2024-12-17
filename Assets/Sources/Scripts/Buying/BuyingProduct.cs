@@ -3,8 +3,7 @@ using UnityEngine;
 
 public abstract class BuyingProduct : MonoBehaviour
 {
-    [SerializeField] private Product[] _productsArray;
-    [SerializeField] private BuyingData _buyingData;
+    [SerializeField] private BuyingScriptableObject _buyingObject;
     [SerializeField] private MoneyView _priceView;
     [SerializeField] private InteractableButton _interactionButton;
     [SerializeField] private SoundPlayer _clickSound;
@@ -17,7 +16,7 @@ public abstract class BuyingProduct : MonoBehaviour
     protected Product CurrentProduct { get; private set; }
     protected PlayerWallet PlayerWallet => _playerWallet;
 
-    public int ProductsCount => _productsArray.Length;
+    public int ProductsCount => _buyingObject.Products.Length;
     public int CurrentCount => _products.Count;
 
     public virtual void Init(PlayerWallet playerWallet)
@@ -30,8 +29,8 @@ public abstract class BuyingProduct : MonoBehaviour
 
         if (_jsonSaving.KeyIsNull(_keyData))
         {
-            foreach (var productsArray in _productsArray)
-                _products.Enqueue(productsArray);
+            for (int i = 0; i < _buyingObject.Products.Length; i++)
+                _products.Enqueue(_buyingObject.Products[i]);
         }
         else
         {
@@ -40,6 +39,7 @@ public abstract class BuyingProduct : MonoBehaviour
             for (int i = 0; i < products.Length; i++)
                 _products.Enqueue(products[i]);
         }
+
 
         if (_products.Count > 0)
         {
@@ -87,7 +87,7 @@ public abstract class BuyingProduct : MonoBehaviour
         }
 
         CurrentProduct = _products.Dequeue();
-        _jsonSaving.Save(_keyData, _buyingData.Construct(_products.ToArray(), CurrentProduct));
+        _jsonSaving.Save(_keyData, new BuyingData(_products.ToArray(), CurrentProduct));
         _clickSound.Play();
 
         if (_products.Count > 0)

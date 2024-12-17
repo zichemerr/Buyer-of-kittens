@@ -950,9 +950,9 @@ RectTransform:
   - {fileID: 637939010}
   m_Father: {fileID: 818649071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 350, y: -255}
   m_SizeDelta: {x: 693.32996, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &248390282
@@ -1090,24 +1090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb221ccd3194bb4db670367ccbba116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _productsArray:
-  - _price: 5
-    _reward: 1
-  - _price: 10
-    _reward: 3
-  - _price: 15
-    _reward: 5
-  _buyingData:
-    Products:
-    - _price: 5
-      _reward: 0
-    - _price: 10
-      _reward: 3
-    - _price: 15
-      _reward: 5
-    CurrentProduct:
-      _price: 0
-      _reward: 0
+  _buyingObject: {fileID: 11400000, guid: 3eceedb9cc32b294382a3522ed36b3b2, type: 2}
   _priceView: {fileID: 248390287}
   _interactionButton: {fileID: 248390285}
   _clickSound:
@@ -1186,7 +1169,7 @@ MonoBehaviour:
   normalCG: {fileID: 473957156}
   highlightCG: {fileID: 1250179970}
   disabledCG: {fileID: 2138138345}
-  normalText: {fileID: 1720433}
+  normalText: {fileID: 0}
   highlightedText: {fileID: 0}
   disabledText: {fileID: 0}
   normalImage: {fileID: 2034074126}
@@ -1196,7 +1179,7 @@ MonoBehaviour:
   rippleParent: {fileID: 637939009}
   isInteractable: 1
   enableIcon: 0
-  enableText: 1
+  enableText: 0
   useCustomContent: 0
   useCustomTextSize: 0
   checkForDoubleClick: 1
@@ -1848,6 +1831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 237485194}
+  _currentScale: {x: 0, y: 0}
 --- !u!114 &302655641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,56 +1864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b972b4f4770fa4c8c66fb5fa2e4d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _framesArray:
-  - _sprites:
-    - {fileID: 21300000, guid: 3496f7f41b4b2a64db6d0b44d6674f63, type: 3}
-    - {fileID: 21300000, guid: bbe501be038e2724d99254b88edfe45c, type: 3}
-    - {fileID: 21300000, guid: 3abd0c85d9f32a84f8aa4176120496ac, type: 3}
-    - {fileID: 21300000, guid: a754075684c6c7449992f333429c7b19, type: 3}
-    - {fileID: 21300000, guid: 2b70004e8ad2adf448e9d7d328880850, type: 3}
-    - {fileID: 21300000, guid: f443170798b59c645af3a29618d4b24a, type: 3}
-    - {fileID: 21300000, guid: 53d27eb4b0eb03f4c94a450bd1ed2c8c, type: 3}
-    - {fileID: 21300000, guid: e511fc77be732e343b249f9a4266ad94, type: 3}
-    - {fileID: 21300000, guid: e511fc77be732e343b249f9a4266ad94, type: 3}
-  - _sprites:
-    - {fileID: 21300000, guid: c90d10ce75aad7843994bfb22da11755, type: 3}
-    - {fileID: 21300000, guid: 6d0918ce72ff0404fbe73bfc204297d8, type: 3}
-    - {fileID: 21300000, guid: 4b4b2d235038c884c84003d26dd44b1a, type: 3}
-    - {fileID: 21300000, guid: 0d7db7d04e9bef64a928756abf455279, type: 3}
-    - {fileID: 21300000, guid: b8ebea482431f8e41bdf06a5aa0f8921, type: 3}
-    - {fileID: 21300000, guid: a41bc87fe0537644a9704eedf90f0bdb, type: 3}
-  - _sprites:
-    - {fileID: 21300000, guid: b2cc8babef859f0438b9a8617b003c5b, type: 3}
-    - {fileID: 21300000, guid: 162abee7cab647e45ab293541d5355bb, type: 3}
-    - {fileID: 21300000, guid: 477fdf563c45f6a42ac0314eed8b3db7, type: 3}
-    - {fileID: 21300000, guid: d3c2769ced6edad4daafbaceaf2a6256, type: 3}
-    - {fileID: 21300000, guid: c0e0705be12577e4fafa1f20770dee62, type: 3}
-    - {fileID: 21300000, guid: 72c8d30728d4f2f409f96edd14a811b8, type: 3}
-    - {fileID: 21300000, guid: ee9e75482ac6fe44ead8e20004c09404, type: 3}
-    - {fileID: 21300000, guid: 3c48dee1ba69d02489c832d53e4b5f6b, type: 3}
-  - _sprites:
-    - {fileID: 21300000, guid: 1c841ca3be9119144860605739f8cb26, type: 3}
-    - {fileID: 21300000, guid: 78471c073d1423f499c60855ca6fa572, type: 3}
-    - {fileID: 21300000, guid: 2a2d2d1417367b64c95d37fda63daf9d, type: 3}
-    - {fileID: 21300000, guid: c3c963c314d7375489f3e8d99a706053, type: 3}
-    - {fileID: 21300000, guid: 75dd213fea7815b458614dedb8f9a06a, type: 3}
-    - {fileID: 21300000, guid: 4d6e447e7b4026944951cb0ac2b4570c, type: 3}
-    - {fileID: 21300000, guid: aa76e23f8e10a744c8a60186a9ea1bbf, type: 3}
-    - {fileID: 21300000, guid: 070e314c317277d44989968f022de25f, type: 3}
-    - {fileID: 21300000, guid: 69b72e8d83473094ba9ac2f1e1ab0140, type: 3}
-  - _sprites:
-    - {fileID: 21300000, guid: 74c12a712349cc649910db9f99b7f2f0, type: 3}
-    - {fileID: 21300000, guid: 7bf06f89e85b3bf428154efbfb23b735, type: 3}
-    - {fileID: 21300000, guid: 17d08a02ad0a5ff47a2903cf5635eada, type: 3}
-    - {fileID: 21300000, guid: f35161e329d702f45b2144e4f7307220, type: 3}
-    - {fileID: 21300000, guid: d74e543bd70ff7f449904734026568a4, type: 3}
-    - {fileID: 21300000, guid: 5686d5d6c42a86e46a189cef5db6425a, type: 3}
-    - {fileID: 21300000, guid: 9adf27dadb9b0d54398e495e1cb16fe6, type: 3}
-    - {fileID: 21300000, guid: cb14d6fc87322ae4fa29f19cf2cd8498, type: 3}
-    - {fileID: 21300000, guid: 9b614eba2314021439a5fe0fc6e5301a, type: 3}
-    - {fileID: 21300000, guid: c1cfde8ee5c690343bd24b9274008de1, type: 3}
-    - {fileID: 21300000, guid: ddc9b056dabf8ed42bf492445eb0daa1, type: 3}
-  _buyingCat: {fileID: 2043200225}
+  _framesData: {fileID: 11400000, guid: 2f3604a727f5aa24d899224a52e7444b, type: 2}
 --- !u!114 &302655643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1944,11 +1879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _progressBar: {fileID: 13782380}
   _valueView: {fileID: 6544003948551896468}
-  _data:
-    Value: 0
-    Level: 1
-  _rewardsArray: 640000002c0100009001000090010000401f0000
-  _maxValue: 10
+  _progressData: {fileID: 11400000, guid: 6c41c85a724e14e49a8023b262c1bdfd, type: 2}
 --- !u!114 &302655644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2049,8 +1980,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 127.10013}
-  m_SizeDelta: {x: 0, y: -254.2003}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &304813202
 MonoBehaviour:
@@ -4196,9 +4127,9 @@ RectTransform:
   - {fileID: 1234670168}
   m_Father: {fileID: 818649071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 350, y: -20}
   m_SizeDelta: {x: 693.32996, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &550886107
@@ -4336,24 +4267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c208e7f00effc4faeb139b1344ec42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _productsArray:
-  - _price: 10
-    _reward: 1
-  - _price: 15
-    _reward: 3
-  - _price: 20
-    _reward: 5
-  _buyingData:
-    Products:
-    - _price: 4
-      _reward: 4
-    - _price: 34
-      _reward: 4
-    - _price: 4
-      _reward: 4
-    CurrentProduct:
-      _price: 0
-      _reward: 0
+  _buyingObject: {fileID: 11400000, guid: ea42ddc64c53dcf42b9c4792ca80a02c, type: 2}
   _priceView: {fileID: 550886112}
   _interactionButton: {fileID: 550886110}
   _clickSound:
@@ -4442,7 +4356,7 @@ MonoBehaviour:
   rippleParent: {fileID: 1234670167}
   isInteractable: 1
   enableIcon: 0
-  enableText: 1
+  enableText: 0
   useCustomContent: 0
   useCustomTextSize: 0
   checkForDoubleClick: 1
@@ -4946,8 +4860,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 32.5, y: -60}
-  m_SizeDelta: {x: 25, y: 110}
+  m_AnchoredPosition: {x: 129.5, y: -77.5}
+  m_SizeDelta: {x: 25, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &637939009
 GameObject:
@@ -5394,8 +5308,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 32.5, y: -60}
-  m_SizeDelta: {x: 25, y: 110}
+  m_AnchoredPosition: {x: 129.5, y: -77.5}
+  m_SizeDelta: {x: 25, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &767465884
 GameObject:
@@ -5565,7 +5479,7 @@ MonoBehaviour:
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
   text: "\u0414\u043E\u0445\u043E\u0434 \u0432 \u0441\u0435\u043A:"
   ru: "\u0414\u043E\u0445\u043E\u0434 \u0432 \u0441\u0435\u043A:"
-  en: 'Reward per second:'
+  en: 'Income per second:'
   tr: "\u041A\u0443\u043A\u0430\u0439:"
   az: 
   be: 
@@ -5919,7 +5833,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 20
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 35
@@ -6360,9 +6274,9 @@ RectTransform:
   - {fileID: 1229874703}
   m_Father: {fileID: 818649071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 350, y: -725}
   m_SizeDelta: {x: 682.24, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &922670335
@@ -6570,7 +6484,7 @@ MonoBehaviour:
   rippleParent: {fileID: 1229874702}
   isInteractable: 1
   enableIcon: 1
-  enableText: 1
+  enableText: 0
   useCustomContent: 0
   useCustomTextSize: 0
   checkForDoubleClick: 1
@@ -7089,7 +7003,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 378.62, y: -77.5}
-  m_SizeDelta: {x: 0, y: 145}
+  m_SizeDelta: {x: 487.24, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057669385
 MonoBehaviour:
@@ -7367,7 +7281,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 346.58502, y: -77.5}
-  m_SizeDelta: {x: 0, y: 145}
+  m_SizeDelta: {x: 459.17, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1131709491
 MonoBehaviour:
@@ -9521,7 +9435,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 404.92, y: -77.5}
-  m_SizeDelta: {x: 0, y: 145}
+  m_SizeDelta: {x: 599.84, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1407121133
 MonoBehaviour:
@@ -10763,7 +10677,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 346.66498, y: -77.5}
-  m_SizeDelta: {x: 0, y: 145}
+  m_SizeDelta: {x: 431.2, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1579205051
 MonoBehaviour:
@@ -11882,8 +11796,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 400, y: -582.8243}
-  m_SizeDelta: {x: 800, y: 1045.6487}
+  m_AnchoredPosition: {x: 400, y: -441.03357}
+  m_SizeDelta: {x: 800, y: 816.8377}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1802909778
 MonoBehaviour:
@@ -11986,8 +11900,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 32.5, y: -60}
-  m_SizeDelta: {x: 25, y: 110}
+  m_AnchoredPosition: {x: 129.5, y: -77.5}
+  m_SizeDelta: {x: 25, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1824471107
 GameObject:
@@ -12984,9 +12898,9 @@ RectTransform:
   - {fileID: 274592441}
   m_Father: {fileID: 818649071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 350, y: -490}
   m_SizeDelta: {x: 693.17004, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2043200219
@@ -13124,28 +13038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef7bbbb208b2c940ad0751ba33e4ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _productsArray:
-  - _price: 100
-    _reward: 0
-  - _price: 300
-    _reward: 0
-  - _price: 400
-    _reward: 0
-  - _price: 400
-    _reward: 0
-  _buyingData:
-    Products:
-    - _price: 100
-      _reward: 0
-    - _price: 300
-      _reward: 0
-    - _price: 400
-      _reward: 0
-    - _price: 400
-      _reward: 0
-    CurrentProduct:
-      _price: 0
-      _reward: 0
+  _buyingObject: {fileID: 11400000, guid: 806e1f3a9aa1e474e8ebdaa41a71d6e8, type: 2}
   _priceView: {fileID: 2043200224}
   _interactionButton: {fileID: 2043200223}
   _clickSound:
@@ -13225,7 +13118,7 @@ MonoBehaviour:
   normalCG: {fileID: 1539392787}
   highlightCG: {fileID: 1497730471}
   disabledCG: {fileID: 830317247}
-  normalText: {fileID: 495813086}
+  normalText: {fileID: 0}
   highlightedText: {fileID: 0}
   disabledText: {fileID: 0}
   normalImage: {fileID: 425813155}
@@ -13235,7 +13128,7 @@ MonoBehaviour:
   rippleParent: {fileID: 274592440}
   isInteractable: 1
   enableIcon: 0
-  enableText: 1
+  enableText: 0
   useCustomContent: 0
   useCustomTextSize: 0
   checkForDoubleClick: 1

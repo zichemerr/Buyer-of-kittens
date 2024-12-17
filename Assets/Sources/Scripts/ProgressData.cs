@@ -1,16 +1,10 @@
-﻿using System;
+using UnityEngine;
 
-[Serializable]
-public class ProgressData
+[CreateAssetMenu(fileName = "Progress", menuName = "ProgressData")]
+public class ProgressData : ScriptableObject
 {
-    public int Value;
-    public int Level;
-
-    public ProgressData SetValues(int value, int level)
-    {
-        Value = value;
-        Level = level;
-
-        return this;
-    }
+    [field: SerializeField] public int[] RewardsArray { get; private set; }
+    [field: SerializeField] public int MaxValue { get; private set; }
+    [field: SerializeField] public int Value { get; private set; }
+    [field: SerializeField] public int Level { get; private set; }
 }

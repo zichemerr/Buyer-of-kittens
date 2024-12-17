@@ -14,7 +14,7 @@ public class PlayerAnimaion : MonoBehaviour
     public void Init()
     {
         _clickAnimation = new ClickAnimation(_transform, _scale, _clickDuration);
-        _switcher.Init(_frames);
+        _switcher.Init(_frames, _clickAnimation);
         _swing.Init();
         _swing.Play();
     }

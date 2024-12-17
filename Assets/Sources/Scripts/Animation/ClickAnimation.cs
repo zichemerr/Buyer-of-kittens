@@ -16,8 +16,12 @@ public class ClickAnimation
         _transform = transform;
         _scale = scale;
         _duration = duration;
-        _defaultScale = transform.localScale;
-        _newScale = transform.localScale + scale;
+    }
+
+    public void Reset()
+    {
+        _defaultScale = _transform.localScale;
+        _newScale = _transform.localScale + _scale;
     }
 
     public void Play()

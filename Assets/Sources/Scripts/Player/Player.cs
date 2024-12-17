@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     {
         _clickerZone = clickerZone;
 
-        _progress.Init(_clickerZone);
+        _progress.Init();
         _levelUpEffect.Init(_progress);
         _clickEffect.Init();
         _animation.Init();

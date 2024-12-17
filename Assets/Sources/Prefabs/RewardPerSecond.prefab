@@ -2320,9 +2320,16 @@ MonoBehaviour:
     _reward: 3
   - _price: 15
     _reward: 5
+  _buyingData:
+    Products: []
+    CurrentProduct:
+      _price: 0
+      _reward: 0
   _priceView: {fileID: 9199328284275607824}
   _interactionButton: {fileID: 7550204147626969514}
-  _clickSound: {fileID: 0}
+  _clickSound:
+    _audioSource: {fileID: 0}
+    _audioClip: {fileID: 0}
 --- !u!114 &9199328284275607824
 MonoBehaviour:
   m_ObjectHideFlags: 0

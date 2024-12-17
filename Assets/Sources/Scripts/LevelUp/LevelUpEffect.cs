@@ -14,29 +14,19 @@ public class LevelUpEffect : MonoBehaviour
     {
         _spawner.Init(_transfrom);
         _progress = progress;
-        _progress.Rewarded += OnShowRewardEffect;
+        _progress.Rewarded += ShowRewardEffect;
     }
 
     private void OnDisable()
     {
-        _progress.Rewarded -= OnShowRewardEffect;
-    }
-
-    private void OnShowRewardEffect(int reward)
-    {
-        ShowRewardEffect(reward, "+");
+        _progress.Rewarded -= ShowRewardEffect;
     }
 
     public void ShowRewardEffect(int reward)
     {
-        ShowRewardEffect(reward, "");
-    }
-
-    public void ShowRewardEffect(int reward, string prefix)
-    {
         RewardText rewardText = _spawner.Spawn(Vector2.zero);
-        rewardText.SetScale(new Vector2(1.5f, 1.5f));
-        rewardText.MoneyView.ShowMoney(reward, prefix);
+        rewardText.SetScale(new Vector2(2, 2));
+        rewardText.MoneyView.ShowMoney(reward, "+");
 
         _clickAnimation.Play(rewardText);
         _rewardAnimation.Play();

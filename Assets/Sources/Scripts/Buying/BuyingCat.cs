@@ -12,6 +12,9 @@ public class BuyingCat : BuyingProduct
     {
         SetDataKey(CatData);
         base.Init(playerWallet);
+
+        for (int i = 0; i < BuyedCats; i++)
+            _animationSwitcher.Switch();
     }
 
     public override void OnBuy()

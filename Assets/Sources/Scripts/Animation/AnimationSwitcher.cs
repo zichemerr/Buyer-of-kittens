@@ -3,26 +3,32 @@ using UnityEngine;
 
 public class AnimationSwitcher : MonoBehaviour
 {
-    [SerializeField] private FramesSprite[] _framesArray;
-    [SerializeField] private BuyingCat _buyingCat;
+    [SerializeField] private AnimationFramesData _framesData;
 
     private Queue<FramesSprite> _frames;
     private FramesAnimation _framesAnimation;
+    private ClickAnimation _clickAnimation;
 
     public int FramesCount => _frames.Count;
 
-    public void Init(FramesAnimation framesAnimation)
+    public void Init(FramesAnimation framesAnimation, ClickAnimation clickAnimation)
     {
+        _clickAnimation = clickAnimation;
         _frames = new Queue<FramesSprite>();
 
-        for (int i = 0; i < _framesArray.Length; i++)
-            _frames.Enqueue(_framesArray[i]);
+        for (int i = 0; i < _framesData.Frames.Length; i++)
+            _frames.Enqueue(_framesData.Frames[i]);
 
         _framesAnimation = framesAnimation;
-        _framesAnimation.SetFramesSprite(_frames.Dequeue());
 
-        for (int i = 0; i < _buyingCat.BuyedCats; i++)
-            Switch();
+        SetFrame();
+    }
+
+    private void SetFrame()
+    {
+        FramesSprite frame = _frames.Dequeue();
+        _framesAnimation.SetFramesSprite(frame, frame.Scale);
+        _clickAnimation.Reset();
     }
 
     public void Switch()
@@ -30,7 +36,7 @@ public class AnimationSwitcher : MonoBehaviour
         if (_frames.Count <= 0)
             return;
 
-        _framesAnimation.SetFramesSprite(_frames.Dequeue());
+        SetFrame();
         _framesAnimation.Play();
     }
 }

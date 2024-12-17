@@ -32,7 +32,7 @@ public class PlayerWallet : MonoBehaviour
         if (_jsonSaving.KeyIsNull(PlayerData) == false)
             _playerData = _jsonSaving.Load(PlayerData);
 
-        _money = _playerData.Money;
+        _money = _playerData.Money + 99999;
         _rewardPerSecond = _playerData.RewardPerSecond;
         _clickPrice = _playerData.ClickReward;
 
@@ -68,8 +68,8 @@ public class PlayerWallet : MonoBehaviour
 
     private void OnRewardVideo(LevelUpEffect levelUpEffect)
     {
-         _money *= 2;
         levelUpEffect.ShowRewardEffect(_money);
+        ChangeMoney(_money);
     }
 
     private IEnumerator GetReward()
