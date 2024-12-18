@@ -32,7 +32,7 @@ public class PlayerWallet : MonoBehaviour
         if (_jsonSaving.KeyIsNull(PlayerData) == false)
             _playerData = _jsonSaving.Load(PlayerData);
 
-        _money = _playerData.Money + 99999;
+        _money = _playerData.Money;
         _rewardPerSecond = _playerData.RewardPerSecond;
         _clickPrice = _playerData.ClickReward;
 
@@ -43,7 +43,7 @@ public class PlayerWallet : MonoBehaviour
         _clickerZone = clickerZone;
         _clickerZone.Clicked += OnClicked;
         StartCoroutine(GetReward());
-    }
+    } 
 
     private void OnEnable() => _progress.Rewarded += OnRewarded;
 

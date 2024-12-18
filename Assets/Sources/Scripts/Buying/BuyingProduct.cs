@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 
 public abstract class BuyingProduct : MonoBehaviour
 {
@@ -40,7 +41,6 @@ public abstract class BuyingProduct : MonoBehaviour
                 _products.Enqueue(products[i]);
         }
 
-
         if (_products.Count > 0)
         {
             _priceView.ShowMoney(_products.Peek().Price);
@@ -63,6 +63,11 @@ public abstract class BuyingProduct : MonoBehaviour
     {
         if (_products.Count <= 0)
         {
+            if (YandexGame.lang == "ru")
+                _priceView.ShowValue("Maксимум");
+            else
+                _priceView.ShowValue("Maximum");
+
             _interactionButton.Disable();
             return;
         }

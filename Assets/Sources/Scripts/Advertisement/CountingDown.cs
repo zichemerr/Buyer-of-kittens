@@ -6,14 +6,12 @@ using UnityEngine;
 public class CountingDown
 {
     private TMP_Text _value;
-    private int _startValue;
 
     public event Action Finished;
 
-    public CountingDown(TMP_Text text, int startValue)
+    public CountingDown(TMP_Text text)
     {
         _value = text;
-        _startValue = startValue;
     }
 
     public void Play(MonoBehaviour monoBehaviour)
@@ -23,10 +21,9 @@ public class CountingDown
 
     private IEnumerator StartAd()
     {
-        _value.text = _startValue.ToString();
-        _startValue--;
+        _value.text = 2.ToString();
         yield return new WaitForSeconds(1);
-        _value.text = _startValue.ToString();
+        _value.text = 1.ToString();
         yield return new WaitForSeconds(1);
         Finished?.Invoke();
     }

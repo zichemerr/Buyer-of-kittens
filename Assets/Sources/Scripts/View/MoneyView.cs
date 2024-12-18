@@ -15,7 +15,7 @@ public class MoneyView : MonoBehaviour
         ShowValue($"{money}$");
     }
 
-    private void ShowValue(string text)
+    public void ShowValue(string text)
     {
         foreach (var valueText in _moneyText)
             valueText.text = text;

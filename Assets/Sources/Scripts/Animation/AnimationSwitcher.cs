@@ -31,6 +31,7 @@ public class AnimationSwitcher : MonoBehaviour
         _clickAnimation.Reset();
     }
 
+    [ContextMenu(nameof(Switch))]
     public void Switch()
     {
         if (_frames.Count <= 0)

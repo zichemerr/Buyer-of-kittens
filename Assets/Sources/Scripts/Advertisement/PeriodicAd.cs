@@ -8,14 +8,13 @@ public class PeriodicAd : MonoBehaviour
     [SerializeField] private GameObject _warning;
     [SerializeField] private TMP_Text _text;
     [SerializeField] private PlayerWallet _player;
-    [SerializeField] private int _startValue;
     [SerializeField] private int _delay;
 
     private CountingDown _countingDown;
 
     private void Awake()
     {
-        _countingDown = new CountingDown(_text, _startValue);
+        _countingDown = new CountingDown(_text);
         StartCoroutine(StartAdTimer());
     }
 

@@ -11,11 +11,13 @@ public class Level : MonoBehaviour
 
     private void Start()
     {
+        //Switch();
+
         _player.Init(_clickerZone, _playerWallet);
 
         foreach (var buyingProducts in _buyingProducts)
             buyingProducts.Init(_playerWallet);
-        //Switch();
+
     }
 
     [ContextMenu(nameof(Switch))]
