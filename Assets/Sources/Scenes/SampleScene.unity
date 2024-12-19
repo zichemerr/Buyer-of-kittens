@@ -1831,7 +1831,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 237485194}
-  _currentScale: {x: 0, y: 0}
 --- !u!114 &302655641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1865,6 +1864,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _framesData: {fileID: 11400000, guid: 2f3604a727f5aa24d899224a52e7444b, type: 2}
+  _switchAnimation:
+    _image: {fileID: 237485194}
+    _time: 1
 --- !u!114 &302655643
 MonoBehaviour:
   m_ObjectHideFlags: 0

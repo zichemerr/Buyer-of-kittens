@@ -21,6 +21,6 @@ public class BuyingCat : BuyingProduct
     {
         base.OnBuy();
         PlayerWallet.Buy(CurrentProduct.Price);
-        _animationSwitcher.Switch();
+        _animationSwitcher.SmoothSwitch();
     }
 }

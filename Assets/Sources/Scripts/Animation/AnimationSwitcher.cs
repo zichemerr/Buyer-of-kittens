@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationSwitcher : MonoBehaviour
 {
     [SerializeField] private AnimationFramesData _framesData;
+    [SerializeField] private SwitchAnimation _switchAnimation;
 
     private Queue<FramesSprite> _frames;
     private FramesAnimation _framesAnimation;
@@ -31,7 +33,6 @@ public class AnimationSwitcher : MonoBehaviour
         _clickAnimation.Reset();
     }
 
-    [ContextMenu(nameof(Switch))]
     public void Switch()
     {
         if (_frames.Count <= 0)
@@ -39,5 +40,21 @@ public class AnimationSwitcher : MonoBehaviour
 
         SetFrame();
         _framesAnimation.Play();
+    }
+
+    public void SmoothSwitch()
+    {
+        if (_frames.Count <= 0)
+            return;
+
+        StartCoroutine(PlaySwitch());
+    }
+
+    private IEnumerator PlaySwitch()
+    {
+        _switchAnimation.Disable();
+        yield return new WaitForSeconds(0.2f);
+        Switch();
+         _switchAnimation.PlayEnable();
     }
 }

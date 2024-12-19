@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class FramesAnimation : MonoBehaviour
 {
     [SerializeField] private Image _image;
-    [SerializeField] private Vector2 _currentScale;
 
     private Queue<Sprite> _sprites;
     private FramesSprite _frames;
+    private Vector2 _currentScale;
 
     public void SetFramesSprite(FramesSprite frames, Vector2 scale)
     {
